@@ -2,8 +2,8 @@ package com.codewithprojects.Springulask_server.enums;
 
 
 
-public class UserRole {
+public enum UserRole {
 
-    public String name() {
-    }
+    ADMIN,
+    EMPLOYEE
 }
