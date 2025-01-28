@@ -1,6 +1,7 @@
 package com.codewithprojects.Springulask_server.entities;
 
 
+import com.codewithprojects.Springulask_server.dto.UserDto;
 import com.codewithprojects.Springulask_server.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -94,5 +95,14 @@ public class User implements UserDetails {
 
     public UserRole getUserRole() {
         return userRole;
+    }
+
+    public UserDto getUserDto() {
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setName(name);
+        userDto.setEmail(email);
+        userDto.setUserRole(userRole);
+        return userDto;
     }
 }

@@ -1,6 +1,8 @@
 package com.codewithprojects.Springulask_server.services.jwt.auth;
 
 
+import com.codewithprojects.Springulask_server.dto.SignupRequest;
+import com.codewithprojects.Springulask_server.dto.UserDto;
 import com.codewithprojects.Springulask_server.entities.User;
 import com.codewithprojects.Springulask_server.enums.UserRole;
 import com.codewithprojects.Springulask_server.repositories.UserRepository;
@@ -37,4 +39,22 @@ public class AuthServiceImpl implements AuthService{
         }
 
     }
+
+    @Override
+    public UserDto signupUser(SignupRequest signupRequest) {
+        User user = new User();
+        user.setEmail(signupRequest.getEmail());
+        user.setName(signupRequest.getName());
+        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        user.setUserRole(UserRole.EMPLOYEE);
+        User createdUser = userRepository.save(user);
+        return createdUser.getUserDto();
+    }
+
+    @Override
+    public boolean hasUserWithEmail(String email) {
+        return userRepository.findFirstByEmail(email).isPresent();
+    }
+
+
 }
