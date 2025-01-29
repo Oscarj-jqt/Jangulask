@@ -8,7 +8,9 @@ import com.codewithprojects.Springulask_server.enums.UserRole;
 import com.codewithprojects.Springulask_server.repositories.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,7 +19,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService{
 
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public AuthServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -45,7 +51,7 @@ public class AuthServiceImpl implements AuthService{
         User user = new User();
         user.setEmail(signupRequest.getEmail());
         user.setName(signupRequest.getName());
-        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
         user.setUserRole(UserRole.EMPLOYEE);
         User createdUser = userRepository.save(user);
         return createdUser.getUserDto();
@@ -53,7 +59,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public boolean hasUserWithEmail(String email) {
-        return userRepository.findFirstByEmail(email).isPresent();
+        return userRepository.findByEmail(email).isPresent();
     }
 
 

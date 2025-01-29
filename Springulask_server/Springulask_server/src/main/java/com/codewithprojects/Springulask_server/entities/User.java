@@ -39,7 +39,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return password;
     }
 
 
@@ -104,5 +104,13 @@ public class User implements UserDetails {
         userDto.setEmail(email);
         userDto.setUserRole(userRole);
         return userDto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
