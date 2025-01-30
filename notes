@@ -1,3 +1,12 @@
 Initialize Angular app
 Adding Angular Materials to app
+Initialize Spring Boot app
 Setup Spring Boot app with MySQL Configuration
+Create User Entity, Repository in Spring Boot
+Create a User Service & JWT Utils class in Spring Boot
+Create a JWT Authentication Filter & Web Security Configuration class in Spring Boot
+Create an Admin Account in Spring Boot Application
+Create a Signup User API in Spring Boot
+Create a Login User API in Spring Boot
+Create a Modules, Components & Navbar for the Not-Lotggoed User in Angular
+Create a Signup & Login Reactive Form in Angular

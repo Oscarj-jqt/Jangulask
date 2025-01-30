@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatError } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatChipsModule } from '@angular/material/chips';
@@ -23,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
     exports: [
         MatButtonModule,
         MatCardModule,
+        MatError,
         MatFormFieldModule,
         MatInputModule,
         MatToolbarModule,
