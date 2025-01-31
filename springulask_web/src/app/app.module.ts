@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from "./app.routes";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -8,6 +8,7 @@ import { LoginComponent } from "./auth/components/login/login.component";
 import { SignupComponent } from "./auth/components/signup/signup.component";
 import { DemoAngularMaterialModule } from "./DemoAngularMaterialModule";
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -16,12 +17,14 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
         SignupComponent
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         DemoAngularMaterialModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
