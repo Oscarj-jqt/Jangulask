@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
   <mat-toolbar color="primary" class="navbar">
     <span class="navbar-brand">Gestionnaire de tâches</span>
     <span class="spacer"></span>
@@ -6,4 +6,23 @@
     <button mat-button routerLink="/login" routerLinkActive="active">Connexion</button>
   </mat-toolbar>
 </div>
+
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Administrateur</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Tableau de bord</button>
+    <button mat-button (click)="logout()" routerLinkActive="active">Déconexion</button>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="isEmployeeLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Utilisateur</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/employee/dashboard" routerLinkActive="active">Tableau de bord</button>
+    <button mat-button (click)="logout()" routerLinkActive="active">Déconnexion</button>
+  </mat-toolbar>
+</div>
+
 <router-outlet></router-outlet>

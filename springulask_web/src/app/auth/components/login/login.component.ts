@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private snackbar: MatSnackBar,
-    private routes: Routes
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       email:[null,[Validators.required,Validators.email]],
@@ -43,9 +43,9 @@ export class LoginComponent {
         StorageService.saveUser(user);
         StorageService.saveToken(res.jwt);
         if (StorageService.isAdminLoggedIn())
-          this.routes.navigateByUrl("/admin/dashboard");
+          this.router.navigateByUrl("/admin/dashboard");
         else if (StorageService.isEmployeeLoggedIn())
-          this.routes.navigateByUrl("/employee/dashboard");
+          this.router.navigateByUrl("/employee/dashboard");
         this.snackbar.open("Login successful", "Close", { duration: 5000 });
       } else {
         this.snackbar.open("Invalid credentials", "Close", { duration:5000, panelClass: "error-snackbar" })
