@@ -8,7 +8,7 @@ import com.codewithprojects.Springulask_server.dto.UserDto;
 import com.codewithprojects.Springulask_server.entities.User;
 import com.codewithprojects.Springulask_server.repositories.UserRepository;
 import com.codewithprojects.Springulask_server.services.jwt.UserService;
-import com.codewithprojects.Springulask_server.services.jwt.auth.AuthService;
+import com.codewithprojects.Springulask_server.services.auth.AuthService;
 import com.codewithprojects.Springulask_server.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,16 +17,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
 
     private final AuthService authService;

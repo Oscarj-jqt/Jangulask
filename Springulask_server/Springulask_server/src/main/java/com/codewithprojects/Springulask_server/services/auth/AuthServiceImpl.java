@@ -1,4 +1,4 @@
-package com.codewithprojects.Springulask_server.services.jwt.auth;
+package com.codewithprojects.Springulask_server.services.auth;
 
 
 import com.codewithprojects.Springulask_server.dto.SignupRequest;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private final UserRepository userRepository;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, Routes } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { StorageService } from './auth/services/storage/storage.service';
 
@@ -10,14 +10,14 @@ import { StorageService } from './auth/services/storage/storage.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+
   isEmployeeLoggedIn: boolean = StorageService.isEmployeeLoggedIn();
   isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
 
-  constructor(private routes:Routes){}
+  constructor(private router:Router){}
 
   ngOnInit(){
-    this.routes.events.subscribe(event=>{
+    this.router.events.subscribe(event=>{
       this.isEmployeeLoggedIn = StorageService.isEmployeeLoggedIn();
       this.isAdminLoggedIn = StorageService.isAdminLoggedIn();
     })
@@ -25,6 +25,6 @@ export class AppComponent {
 
   logout() {
     StorageService.logout();
-    this.routes.navigateByUrl("/login");
+    this.router.navigateByUrl("/login");
   }
 }

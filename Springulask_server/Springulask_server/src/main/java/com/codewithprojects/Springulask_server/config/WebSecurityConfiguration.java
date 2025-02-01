@@ -3,7 +3,6 @@ package com.codewithprojects.Springulask_server.config;
 
 import com.codewithprojects.Springulask_server.enums.UserRole;
 import com.codewithprojects.Springulask_server.services.jwt.UserService;
-import com.codewithprojects.Springulask_server.config.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,8 +23,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 import org.springframework.security.config.http.SessionCreationPolicy;
-
-import static java.lang.classfile.AttributeMapper.AttributeStability.STATELESS;
 
 @Configuration
 @EnableWebSecurity

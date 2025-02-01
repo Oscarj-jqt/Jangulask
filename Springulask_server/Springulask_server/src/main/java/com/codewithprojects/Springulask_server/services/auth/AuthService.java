@@ -1,4 +1,4 @@
-package com.codewithprojects.Springulask_server.services.jwt.auth;
+package com.codewithprojects.Springulask_server.services.auth;
 
 import com.codewithprojects.Springulask_server.dto.SignupRequest;
 import com.codewithprojects.Springulask_server.dto.UserDto;
