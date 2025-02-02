@@ -29,6 +29,12 @@ export class AdminService {
     })
   }
 
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete(BASIC_URL + "api/admin/task" + id, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization', 'Bearer' + StorageService.getToken()
