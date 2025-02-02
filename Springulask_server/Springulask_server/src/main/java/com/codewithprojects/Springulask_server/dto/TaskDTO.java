@@ -24,7 +24,7 @@ public class TaskDTO {
 
     private String employeeName;
 
-    public Long getEmployee() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
