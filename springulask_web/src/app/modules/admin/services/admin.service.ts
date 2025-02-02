@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
-import { BASIC_URL}
+
+const BASIC_URL = "http://localhost:8082";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,13 @@ export class AdminService {
 
   getUsers(): Observable<any> {
     return this.http.get(BASIC_URL + "api/admin/users", {
-      headers:this.createAuthorizationHeader();
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
+  postTask(taskDTO: any): Observable<any> {
+    return this.http.post(BASIC_URL + "api/admin/task", taskDTO, {
+      headers: this.createAuthorizationHeader()
     })
   }
 
