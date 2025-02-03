@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/admin")
@@ -55,6 +57,11 @@ public class AdminController {
         TaskDTO updatedTask = adminService.updateTask(id, taskDTO);
         if (updatedTask == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(updatedTask);
+    }
+
+    @GetMapping("/tasks/search/{title}")
+    public ResponseEntity<List<TaskDTO>> searchTask(@PathVariable String title) {
+        return ResponseEntity.ok(adminService.searchTaskByTitle(title));
     }
 
 }
