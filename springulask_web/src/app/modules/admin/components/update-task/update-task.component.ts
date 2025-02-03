@@ -14,11 +14,9 @@ import { Router } from 'express';
 export class UpdateTaskComponent {
 
   id: number = this.route.snapshot.params["id"];
-  taskForm!: FormGroup;
+  updateTaskForm!: FormGroup;
   listOfEmployees: any = [];
   listOfPriorities: any = ["LOW", "MEDIUM", "HIGH"];
-  updateTaskForm: any;
-  snackBar: any;
 
   constructor(private service: AdminService,
     private route: ActivatedRoute,
@@ -40,6 +38,7 @@ export class UpdateTaskComponent {
 
   getTaskById() {
     this.service.getTaskById(this.id).subscribe((res) => {
+      this.updateTaskForm.patchValue(res);
       console.log(res);
     })
   }
@@ -52,7 +51,6 @@ export class UpdateTaskComponent {
   }
 
   updateTask() {
-    
     this.adminService.updateTask(this.id, this.updateTask.value).subscribe((res)=>{
       if(res.id != null){
         this.snackBar.open("Task updated successfully","Close", { duration: 5000 });

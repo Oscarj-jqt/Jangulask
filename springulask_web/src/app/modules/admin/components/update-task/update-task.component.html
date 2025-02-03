@@ -6,7 +6,7 @@
             <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Titre</mat-label>
                     <input matInput type="text" placeholder="Title" formControlName="title" />
-                    <mat-error *ngIf="taskForm.get('title')?.hasError('required')">Ce champ est obligatoire !</mat-error>
+                    <mat-error *ngIf="updateTaskForm.get('title')?.hasError('required')">Ce champ est obligatoire !</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="form-field">
@@ -20,7 +20,7 @@
                     <input matInput [matDatepicker]="dueDatePicker" placeholder="Choisissez la date de rendu" formControlName="dueDate">
                     <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #dueDatePicker></mat-datepicker>
-                    <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">Ce champ est obligatoire !</mat-error>
+                    <mat-error *ngIf="updateTaskForm.get('dueDate')?.hasError('required')">Ce champ est obligatoire !</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="form-field">
@@ -30,7 +30,7 @@
                             {{priority}}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">Ce champ est obligaoire !</mat-error>
+                    <mat-error *ngIf="updateTaskForm.get('priority')?.hasError('required')">Ce champ est obligaoire !</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="form-field">
@@ -40,13 +40,13 @@
                             {{employee.name}}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">Ce champ est obligaoire !</mat-error>
+                    <mat-error *ngIf="updateTaskForm.get('priority')?.hasError('required')">Ce champ est obligaoire !</mat-error>
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid"
                     (click)="postTask()">Ajouter une tâche </button> 
 
-            <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid" 
+            <button mat-raised-button color="primary" type="submit" [disabled]="updateTaskForm.invalid" 
             (click)="updateTask()">Mettre à jour la tâche</button>
     </mat-card>
     </form>
