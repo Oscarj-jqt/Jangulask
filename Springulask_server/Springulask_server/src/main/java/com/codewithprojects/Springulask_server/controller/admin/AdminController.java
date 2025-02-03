@@ -2,8 +2,10 @@ package com.codewithprojects.Springulask_server.controller.admin;
 
 
 import com.codewithprojects.Springulask_server.dto.TaskDTO;
+import com.codewithprojects.Springulask_server.entities.Task;
 import com.codewithprojects.Springulask_server.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +43,18 @@ public class AdminController {
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         adminService.deleteTask(id);
         return ResponseEntity.ok(null);
+    }
+
+    @GetMapping("/task/{id}")
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
+        return ResponseEntity.ok(adminService.getTaskById(id));
+    }
+
+    @PutMapping("/task/{id}")
+    public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
+        TaskDTO updatedTask = adminService.updateTask(id, taskDTO);
+        if (updatedTask == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(updatedTask);
     }
 
 }
