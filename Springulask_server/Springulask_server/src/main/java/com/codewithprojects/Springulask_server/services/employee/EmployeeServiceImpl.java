@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,5 +38,15 @@ public class EmployeeServiceImpl implements EmployeeService {
                     .collect(Collectors.toList());
         }
         throw new EntityNotFoundException("User not found");
+    }
+
+    @Override
+    public TaskDTO updateTask(Long id, String status) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        if (optionalTask.isPresent()) {
+            Task existingTask = optionalTask.get();
+            existingTask.setTaskStatus();
+        }
+        throw new EntityNotFoundException("Task not found");
     }
 }
