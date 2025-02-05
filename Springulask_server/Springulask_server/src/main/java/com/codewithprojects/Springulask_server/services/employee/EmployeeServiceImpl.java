@@ -45,7 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if (optionalTask.isPresent()) {
             Task existingTask = optionalTask.get();
-            existingTask.setTaskStatus();
+            existingTask.setTaskStatus(mapStringToTaskStatus(status));
+            return taskRepository.save(existingTask).getTaskDTO();
         }
         throw new EntityNotFoundException("Task not found");
     }
