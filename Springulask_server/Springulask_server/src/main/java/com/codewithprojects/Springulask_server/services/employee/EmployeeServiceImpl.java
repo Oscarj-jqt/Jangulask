@@ -3,6 +3,7 @@ package com.codewithprojects.Springulask_server.services.employee;
 import com.codewithprojects.Springulask_server.dto.TaskDTO;
 import com.codewithprojects.Springulask_server.entities.Task;
 import com.codewithprojects.Springulask_server.entities.User;
+import com.codewithprojects.Springulask_server.enums.TaskStatus;
 import com.codewithprojects.Springulask_server.repositories.TaskRepository;
 import com.codewithprojects.Springulask_server.utils.JwtUtil;
 import jakarta.persistence.EntityNotFoundException;
@@ -49,5 +50,15 @@ public class EmployeeServiceImpl implements EmployeeService {
             return taskRepository.save(existingTask).getTaskDTO();
         }
         throw new EntityNotFoundException("Task not found");
+    }
+
+    private TaskStatus mapStringToTaskStatus(String status) {
+        return switch (status) {
+            case "PENDING" -> TaskStatus.PENDING;
+            case "INPROGESS" -> TaskStatus.INPROGRESS;
+            case "COMPLETED" -> TaskStatus.COMPLETED;
+            case "DEFERRED" -> TaskStatus.DEFERRED;
+            default -> TaskStatus.CANCELLED;
+        };
     }
 }
